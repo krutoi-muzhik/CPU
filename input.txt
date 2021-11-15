@@ -1,0 +1,15 @@
+PUSH 1
+POP [2]
+PUSH 1
+PUSH 2
+POP ax
+POP bx
+HLT
+PUSH ax
+PUSH bx
+ADD
+OUT
+IN
+NEG
+OUT
+HLT
