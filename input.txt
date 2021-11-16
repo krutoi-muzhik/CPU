@@ -4,7 +4,9 @@ PUSH 1
 PUSH 2
 POP ax
 POP bx
+JMP M
 HLT
+M:
 PUSH ax
 PUSH bx
 ADD
