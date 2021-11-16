@@ -53,7 +53,7 @@ Processing (const char *object_path) {
 		#define DEF_CMD(name, num, type, arg, performance) {	\
 			if (cmd_number == num) {							\
 				printf ("%s\n", #name);							\
-				if (arg && type) {								\
+				if (arg) {										\
 					value = code[rip++];						\
 				}												\
 				performance										\
