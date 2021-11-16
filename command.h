@@ -27,7 +27,7 @@
 
 #include "cpu.h"
 
-DEF_CMD (PUSH, N_CMD(1), TYPE(1), ARG(1), {
+DEF_CMD (PUSH, N_CMD(1), TYPE(0), ARG(1), {
 	// rip++;
 	switch (cmd_mode) {
 		case NUM_M:
@@ -47,7 +47,7 @@ DEF_CMD (PUSH, N_CMD(1), TYPE(1), ARG(1), {
 	}
 })
 
-DEF_CMD (POP, N_CMD(2), TYPE(1), ARG(1), {
+DEF_CMD (POP, N_CMD(2), TYPE(0), ARG(1), {
 	// rip++;
 	switch (cmd_mode) {
 		case NUM_M:
@@ -123,27 +123,27 @@ DEF_CMD (SQRT, N_CMD(14), TYPE(0), ARG(0), {
 	DO_PUSH (sqrt (DO_POP));
 })
 
-DEF_CMD (JMP, N_CMD(15), TYPE(0), ARG(1), {
+DEF_CMD (JMP, N_CMD(15), TYPE(1), ARG(1), {
 	DO_JUMP
 })
 
-DEF_CMD (JE, N_CMD(16), TYPE(0), ARG(1), {
+DEF_CMD (JE, N_CMD(16), TYPE(1), ARG(1), {
 	DO_CMP (==) DO_JUMP
 })
 
-DEF_CMD (JA, N_CMD(17), TYPE(0), ARG(1), {
+DEF_CMD (JA, N_CMD(17), TYPE(1), ARG(1), {
 	DO_CMP (>) DO_JUMP
 })
 
-DEF_CMD (JB, N_CMD(18), TYPE(0), ARG(1), {
+DEF_CMD (JB, N_CMD(18), TYPE(1), ARG(1), {
 	DO_CMP (<) DO_JUMP
 })
 
-DEF_CMD (JAE, N_CMD(19), TYPE(0), ARG(1), {
+DEF_CMD (JAE, N_CMD(19), TYPE(1), ARG(1), {
 	DO_CMP (>=) DO_JUMP
 })
 
-DEF_CMD (JBE, N_CMD(20), TYPE(0), ARG(1), {
+DEF_CMD (JBE, N_CMD(20), TYPE(1), ARG(1), {
 	DO_CMP (<=) DO_JUMP
 })
 
