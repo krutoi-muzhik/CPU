@@ -8,6 +8,7 @@
 enum ASS_SIZES {
 	BUF_SIZE = 1024,
 	MARK_TAB_SIZE = 10,
+	MARK_USE_NUM = 10,
 	CMD_SIZE = 10,
 	ARG_SIZE = 10
 };
@@ -29,8 +30,11 @@ enum MODES {
 };
 
 typedef struct mark {
-	char *name;
-	int ip;
+	int use_count;
+	int mark_usage[MARK_USE_NUM];
+	char mark_name[CMD_SIZE];
+	int rip;
 } mark_t;
 
 void Assembling (const char *input_path, const char *output_path);
+int MarkSeek (mark_t *mark_tab, int *tab_size, const char *name, int rip);
