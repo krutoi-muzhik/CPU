@@ -25,7 +25,7 @@
 	}												\
 }
 
-#include "cpu.h"
+#include "../proc/cpu.h"
 
 DEF_CMD (PUSH, N_CMD(1), TYPE(0), ARG(1), {
 	// rip++;
@@ -68,7 +68,7 @@ DEF_CMD (POP, N_CMD(2), TYPE(0), ARG(1), {
 })
 
 DEF_CMD (HLT, N_CMD(0), TYPE(0), ARG(0), {
-	printf ("u reached the end without errors\n");
+	// printf ("u reached the end without errors\n");
 })
 
 DEF_CMD (IN, N_CMD(3), TYPE(0), ARG(0), {
