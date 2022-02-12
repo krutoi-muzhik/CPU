@@ -1,5 +1,4 @@
 #include "cpu.h"
-#include "stack.h"
 
 int
 main () {
