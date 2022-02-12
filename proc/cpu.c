@@ -1,11 +1,13 @@
 #include "cpu.h"
-#include "stack.h"
+
+#define DEBUG 0
 
 #define handle_error(comand) { 							\
 	printf (comand); 									\
 	printf (" !!! ERROR OCCURED CHECK LOGS !!!\n\n");   \
 	exit (EXIT_FAILURE); 								\
 }
+
 
 void
 Processing (const char *object_path) {
@@ -49,17 +51,17 @@ Processing (const char *object_path) {
 		cmd = code[rip++];
 		cmd_number = cmd & CMD_CHECK;
 		cmd_mode = (cmd & MODE_CHECK) >> MODE_SET;
-		printf ("num = %d mode = %d rip = %d \n", cmd_number, cmd_mode, rip);
+		if (DEBUG) printf ("num = %d mode = %d rip = %d \n", cmd_number, cmd_mode, rip);
 		#define DEF_CMD(name, num, type, arg, performance) {	\
 			if (cmd_number == num) {							\
-				printf ("%s\n", #name);							\
+				if (DEBUG) printf ("%s\n", #name);				\
 				if (arg) {										\
 					value = code[rip++];						\
 				}												\
 				performance										\
 			}													\
 		}
-		#include "command.h"
+		#include "../command/command.h"
 		#undef DEF_CMD
 	}
 }
