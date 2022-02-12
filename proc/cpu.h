@@ -1,13 +1,12 @@
 #pragma once
 
-#include "stack.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <math.h>
-#include "stack.h"
+#include "../stack/stack.h"
 
 enum CPU_SIZES {
 	CODE_SIZE = 1024,
