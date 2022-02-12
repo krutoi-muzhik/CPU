@@ -1,5 +1,6 @@
 #include "assembler.h"
 
+#define DEBUG 0
 
 #define handle_error(comand) { 							\
 	printf (comand); 									\
@@ -85,7 +86,7 @@ Assembling (const char *input_path, const char *object_path) {
 			}																	\
 		}
 
-		#include "command.h"
+		#include "../command/command.h"
 		#undef DEF_CMD
 	}
 
@@ -94,7 +95,7 @@ Assembling (const char *input_path, const char *object_path) {
 
 	for (int i = 0; i < mark_num; i++) {
 		for (int j = 0; j < mark_tab[i].use_count; j++) {
-			printf ("%s  %d\n", mark_tab[i].mark_name, mark_tab[i].rip);
+			if (DEBUG) printf ("%s  %d\n", mark_tab[i].mark_name, mark_tab[i].rip);
 			code[mark_tab[i].mark_usage[j]] = mark_tab[i].rip;
 		}
 	}
@@ -108,7 +109,7 @@ Assembling (const char *input_path, const char *object_path) {
 	fclose (object_file);
 
 	for (int i = 0; i < rip; i++) {
-		printf ("code[%d] = %d\n", i, code[i]);
+		if (DEBUG) printf ("code[%d] = %d\n", i, code[i]);
 	}
 }
 
